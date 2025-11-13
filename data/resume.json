@@ -1,0 +1,54 @@
+{
+  "about": "Hey there! I'm Harsh Kumar — a passionate developer and designer pursuing M.Sc. Informatics at the University of Delhi. I love building creative, user-focused digital experiences that blend design and technology. My interests include web development, UI design, and database systems, and I’m always eager to learn new tools and frameworks.",
+  
+  "skills": [
+    "C",
+    "Python",
+    "HTML",
+    "CSS",
+    "MySQL",
+    "SQL",
+    "Figma",
+    "Canva",
+    "Microsoft Office (Word, Excel, PowerPoint)",
+    "Teamwork",
+    "Creativity",
+    "Time Management",
+    "Adaptability"
+  ],
+
+  "projects": [
+    {
+      "name": "QueMe – Virtual Queue Management System (Figma Design)",
+      "desc": "Designed a landing page concept for a web app that allows users to join queues remotely, reducing physical wait times. Created responsive layouts and interactive prototypes in Figma focusing on clean typography, intuitive navigation, and consistent visual style."
+    },
+    {
+      "name": "Portfolio Website with Scroll-Based Sections",
+      "desc": "Developed a personal portfolio website using HTML and CSS with scroll-snap sections, sticky headers, and responsive design. Implemented smooth navigation with active section highlighting and accessibility-focused layout."
+    },
+    {
+      "name": "Soccer Team Database Management System",
+      "desc": "Created a relational database in MySQL to manage soccer teams, players, and match statistics. Designed ER diagrams and optimized SQL queries for efficient data retrieval and management."
+    }
+  ],
+
+  "education": [
+    "M.Sc. Informatics – Institute of Informatics & Communication, University of Delhi (Pursuing, Expected 2026)",
+    "B.Sc. Electronics – Rajdhani College, University of Delhi (2023) – 8.758 CGPA",
+    "Class XII – GSBV D-Block, Janakpuri, CBSE (2020) – 86%",
+    "Class X – GSBV D-Block, Janakpuri, CBSE (2018) – 80%"
+  ],
+
+  "certifications": [
+    "Canva Essentials – Canva (2024)",
+    "Introduction to Career Skills in Data Analytics – LinkedIn Learning (2025)"
+  ],
+
+  "contact": {
+    "email": "m.harsharma07@gmail.com",
+    "phone": "8447940525",
+    "linkedin": "https://www.linkedin.com/in/harsh-kumar-3882742a5",
+    "github": "https://github.com/harsharma07-git",
+    "location": "New Delhi, India"
+  }
+}

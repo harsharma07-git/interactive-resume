@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Harsh Kumar – Gamified Resume (Enhanced)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- HUD -->
+  <div id="hud">
+    <div id="hud-left">
+      <div class="hud-item">Score <span id="score">0</span></div>
+      <div class="hud-item">Level <span id="levelNum">1</span></div>
+      <!-- Combo Counter -->
+      <div class="hud-item combo-display hidden" id="comboDisplay">
+        Combo <span id="comboCount">0</span>x
+      </div>
+    </div>
+    <div id="hud-right">
+      <div class="hud-item">Lives <span id="lives">3</span></div>
+      <!-- Achievement Button -->
+      <button class="hud-item achievement-btn" id="achievementBtn" title="Achievements">
+        🏆 <span id="achievementCount">0</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Game container -->
+  <div id="game-wrap">
+    <canvas id="gameCanvas" width="900" height="500"></canvas>
+
+    <!-- Power UI -->
+    <div id="power-ui" class="hidden">
+      <div class="aim-guide"></div>
+      <div id="power-bar"><div id="power-fill"></div></div>
+      <div class="power-meters">
+        <div class="meter">
+          <span>Power</span>
+          <div class="meter-bar"><div id="power-meter"></div></div>
+        </div>
+        <div class="meter">
+          <span>Curve</span>
+          <div class="meter-bar"><div id="curve-meter"></div></div>
+        </div>
+      </div>
+      <div id="help-text">Drag to aim • horizontal drag adds curve • release to shoot</div>
+    </div>
+
+    <!-- Combo Notification -->
+    <div id="combo-notification" class="hidden"></div>
+
+    <!-- Achievement Notification -->
+    <div id="achievement-notification" class="hidden">
+      <div class="achievement-icon">🏆</div>
+      <div class="achievement-text">
+        <div class="achievement-title"></div>
+        <div class="achievement-desc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intro overlay -->
+  <div id="intro" class="overlay">
+    <div class="card modern-card">
+      <h1>⚽ Harsh Kumar – Interactive Resume</h1>
+      <p class="muted">Welcome! This is an interactive resume – play by kicking the ball to hit moving targets inside the goal. Each target unlocks part of my resume (Projects, Skills, Education, Contact). Unlock all targets to view the full resume.</p>
+      
+      <!-- Feature highlights -->
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="feature-icon">🎯</div>
+          <div class="feature-text">Trajectory Preview</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🏆</div>
+          <div class="feature-text">Achievements</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-text">Combo System</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">💾</div>
+          <div class="feature-text">Progress Saved</div>
+        </div>
+      </div>
+
+      <ul class="controls">
+        <li>🎮 Click/tap and drag to set power & curve</li>
+        <li>🎯 Watch the trajectory preview</li>
+        <li>⚡ Chain hits for combo bonuses</li>
+        <li>🏆 Unlock achievements</li>
+        <li>❤️ 3 lives – try to unlock all targets!</li>
+      </ul>
+      <div class="cta">
+        <button id="startBtn" class="btn-primary">Start Game</button>
+        <button id="viewResumeBtn" class="btn-secondary">View Full Resume</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Achievement Panel -->
+  <div id="achievement-panel" class="overlay hidden">
+    <div class="card modern-card achievement-card">
+      <div class="card-header">
+        <h2>🏆 Achievements</h2>
+        <button id="close-achievements" class="close-btn">×</button>
+      </div>
+      <div id="achievement-list" class="achievement-grid"></div>
+    </div>
+  </div>
+
+  <!-- Tutorial Overlay -->
+  <div id="tutorial" class="overlay tutorial-overlay hidden">
+    <div class="tutorial-content modern-card">
+      <div class="tutorial-step">
+        <div class="tutorial-icon">👆</div>
+        <h3>Drag to Aim</h3>
+        <p>Click and drag to set power and direction</p>
+      </div>
+      <div class="tutorial-arrow">→</div>
+      <div class="tutorial-step">
+        <div class="tutorial-icon">🎯</div>
+        <h3>Watch Preview</h3>
+        <p>Dotted line shows ball trajectory</p>
+      </div>
+      <div class="tutorial-arrow">→</div>
+      <div class="tutorial-step">
+        <div class="tutorial-icon">⚽</div>
+        <h3>Release to Kick</h3>
+        <p>Let go to shoot at the goal</p>
+      </div>
+      <button id="skip-tutorial" class="btn-primary">Got it!</button>
+    </div>
+  </div>
+
+  <!-- Popup overlay -->
+  <div id="popup" class="hidden">
+    <div class="popup-content modern-card">
+      <h2 id="popup-title">Projects</h2>
+      <div id="popup-text">Section content here</div>
+      <div class="popup-actions">
+        <button id="close-btn" class="btn-primary">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Congratulatory overlay -->
+  <div id="congrats" class="overlay hidden">
+    <div class="card modern-card center">
+      <h2>🎉 You unlocked Harsh Kumar's full resume!</h2>
+      <p class="muted">Great job – you explored all sections. View the full resume below.</p>
+      
+      <!-- Stats display -->
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value" id="final-score">0</div>
+          <div class="stat-label">Final Score</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="final-achievements">0</div>
+          <div class="stat-label">Achievements</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="best-combo">0</div>
+          <div class="stat-label">Best Combo</div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <a id="congrats-link" href="#" target="_blank">
+          <button class="btn-primary">View Full Resume</button>
+        </a>
+        <button id="play-again" class="btn-secondary">Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- End screen -->
+  <div id="end-screen" class="overlay hidden">
+    <div class="card modern-card center">
+      <h2>Game Over</h2>
+      <p class="muted">Try again to unlock the full resume!</p>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value" id="end-score">0</div>
+          <div class="stat-label">Score</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="end-targets">0</div>
+          <div class="stat-label">Targets Hit</div>
+        </div>
+      </div>
+      <div class="cta">
+        <button id="restart-btn" class="btn-primary">Restart</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
