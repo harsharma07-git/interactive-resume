@@ -2,7 +2,7 @@
 
 > A football-themed gamified resume where you kick the ball to unlock my professional profile.
 
-**[🎮 Play Live Demo](https://harsharma07-git.github.io/interactive-resume/)**
+**[Play Live Demo](https://harsharma07-git.github.io/interactive-resume/)**
 
 
 
@@ -19,7 +19,7 @@ This isn't your typical resume - it's an interactive game! Kick the football to 
 - Mobile responsive
 
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 - **HTML5 Canvas** - Game rendering
 - **CSS3** - Modern animations and responsive design
@@ -27,7 +27,7 @@ This isn't your typical resume - it's an interactive game! Kick the football to 
 - **LocalStorage API** - Progress persistence
 
 
-## How to Play
+## 🥅 How to Play
 
 1. Click and drag to aim (dotted line shows trajectory)
 2. Release to shoot the ball
